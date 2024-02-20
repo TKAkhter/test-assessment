@@ -49,7 +49,6 @@ export const login = async (req: Request, res: Response): Promise<Response | voi
 
 export const getShowList = async (req: Request, res: Response): Promise<Response | void> => {
   const { userId } = req.query;
-  console.log("🚀 ~ getShowList ~ userId:", userId);
   try {
     const shows = await Show.find({ userId });
     return res.json({ success: true, shows });
@@ -93,10 +92,11 @@ export const addShow = async (req: Request, res: Response): Promise<Response | v
 };
 
 export const removeShow = async (req: Request, res: Response): Promise<Response | void> => {
-  const { id } = req.params;
+  const { userId, id } = req.params;
   try {
     await Show.findByIdAndDelete(id);
-    res.json({ success: true, message: "Show removed successfully" });
+    const UpdatedShows = await Show.find({ userId });
+    res.json({ success: true, message: "Show removed successfully", shows: UpdatedShows });
   } catch (error_) {
     const error = error_ as AxiosError;
     res.status(500).json({ success: false, message: error.message });
@@ -127,9 +127,11 @@ export const toogleMarkEpisodeAsWatched = async (
 
     show.episodes[episodeIndex].watched = watched;
     await show.save();
+    const UpdatedShows = await Show.find({ userId });
     return res.json({
       success: true,
       message: `Episode marked as ${watched ? "watched" : "un-watched"}`,
+      shows: UpdatedShows
     });
   } catch (error_) {
     const error = error_ as AxiosError;

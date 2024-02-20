@@ -15,7 +15,7 @@ router.post("/login", login);
 router.post("/createuser", createUser);
 router.get("/showlist", getShowList);
 router.post("/addshow", addShow);
-router.delete("/removeshow/:id", removeShow);
-router.put("/tooglemarkwatched/:id", toogleMarkEpisodeAsWatched);
+router.delete("/removeshow/:userId/:id", removeShow);
+router.put("/tooglemarkwatched/:userId/:id", toogleMarkEpisodeAsWatched);
 
 export default router;
