@@ -7,7 +7,7 @@
     "clean": "rimraf dist/",
     "build": "npm run clean && tsc",
     "postinstall": "npm run build",
-    "start": "nodemon --optimize_for_size dist/src/index.js",
+    "start": "nodemon --optimize_for_size dist/index.js",
     "dev": "nodemon -exec --config src/config/nodemon.json 'ts-node' src/index.ts",
     "prepare": "husky",
     "lint": "eslint src/**/*.ts",
@@ -19,7 +19,14 @@
     "type": "git",
     "url": "git//https://github.com/TKAkhter/test-assessment-backend"
   },
-  "author": "",
+  "engines": {
+    "node": "20.x"
+  },
+  "keywords": [
+    "test-assessment",
+    "heroku"
+  ],
+  "author": "Talha Akhter",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TKAkhter/test-assessment-backend/issues"

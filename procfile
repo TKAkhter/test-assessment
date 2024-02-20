@@ -1,0 +1,1 @@
+web: nodemon --max_old_space_size=$NODE_MAX_OLD_SPACE_SIZE --gc_interval=$NODE_GC_INTERVAL --optimize_for_size dist/index.js
