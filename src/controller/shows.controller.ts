@@ -85,7 +85,7 @@ export const addShow = async (req: Request, res: Response): Promise<Response | v
 
     const newShow = new Show({ title, episodes, userId });
     await newShow.save();
-    return res.json({ success: true, message: "Show added successfully" });
+    return res.json({ success: true, message: "Show added successfully", show: newShow });
   } catch (error_) {
     const error = error_ as AxiosError;
     return res.status(500).json({ success: false, message: error.message });
