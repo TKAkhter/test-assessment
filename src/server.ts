@@ -11,11 +11,11 @@ import hpp from "hpp";
 import { slowDown } from "express-slow-down";
 import responseTime from "response-time";
 import timeout from "connect-timeout";
-import { cors } from "./middlewares/cors";
+import mongoose from "mongoose";
 
+import { cors } from "./middlewares/cors";
 // Routing
 import indexRouter from "./routes/index";
-import mongoose from "mongoose";
 
 const app = express();
 
@@ -100,10 +100,13 @@ app.use((_, res, next) => {
   next();
 });
 
-// MongoDB Connect 
-mongoose.connect(process.env.MONGODB_URI as string)
-  .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+// MongoDB Connect
+(() => {
+  mongoose
+    .connect(process.env.MONGODB_URI as string)
+    .then(() => console.log("MongoDB Connected"))
+    .catch((error) => console.log(error));
+})();
 
 // Routes
 app.use("/api", indexRouter);
@@ -112,7 +115,6 @@ app.use("/api", indexRouter);
 app.get("/debug-sentry", () => {
   throw new Error("My first Sentry error!");
 });
-
 
 // catch 404 and forward to error handler
 app.use((_: Request, res: Response) => res.status(404).send("Route not found"));

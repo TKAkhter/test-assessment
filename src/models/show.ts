@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface IEpisode {
   title: string;
@@ -12,10 +12,12 @@ export interface IShow extends Document {
 
 const ShowSchema: Schema = new Schema({
   title: String,
-  episodes: [{
-    title: String,
-    watched: { type: Boolean, default: false }
-  }]
+  episodes: [
+    {
+      title: String,
+      watched: { type: Boolean, default: false },
+    },
+  ],
 });
 
-export default mongoose.model<IShow>('Show', ShowSchema);
+export default mongoose.model<IShow>("Show", ShowSchema);
