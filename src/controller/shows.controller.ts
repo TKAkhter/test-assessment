@@ -131,7 +131,7 @@ export const toogleMarkEpisodeAsWatched = async (
     return res.json({
       success: true,
       message: `Episode marked as ${watched ? "watched" : "un-watched"}`,
-      shows: UpdatedShows
+      shows: UpdatedShows,
     });
   } catch (error_) {
     const error = error_ as AxiosError;
