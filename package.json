@@ -1,5 +1,5 @@
 {
-  "name": "test_assessment",
+  "name": "test_assessment_backend",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/index.js",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git//https://github.com/TKAkhter/test-assessment"
+    "url": "git//https://github.com/TKAkhter/test-assessment-backend"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TKAkhter/test-assessment/issues"
+    "url": "https://github.com/TKAkhter/test-assessment-backend/issues"
   },
-  "homepage": "https://github.com/TKAkhter/test-assessment#readme",
+  "homepage": "https://github.com/TKAkhter/test-assessment-backend#readme",
   "dependencies": {
     "@types/color": "^3.0.6",
     "@types/express": "^4.17.21",
@@ -42,9 +42,11 @@
     "helmet": "^7.1.0",
     "hpp": "^0.2.3",
     "http-server": "^14.1.1",
+    "imdb-api": "^4.4.1",
     "isomorphic-fetch": "^3.0.0",
     "js-base64": "^3.7.5",
     "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.3",
     "morgan": "^1.10.0",
     "nocache": "^4.0.0",
     "nodemon": "^3.0.2",

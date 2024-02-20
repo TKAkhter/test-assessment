@@ -15,6 +15,7 @@ import { cors } from "./middlewares/cors";
 
 // Routing
 import indexRouter from "./routes/index";
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -99,8 +100,13 @@ app.use((_, res, next) => {
   next();
 });
 
+// MongoDB Connect 
+mongoose.connect(process.env.MONGODB_URI as string)
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
 // Routes
-app.use("/", indexRouter);
+app.use("/api", indexRouter);
 
 // Sentry Debug Route
 app.get("/debug-sentry", () => {

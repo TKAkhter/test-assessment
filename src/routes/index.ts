@@ -1,19 +1,14 @@
-import express from "express";
+import { Router } from "express";
 
-const router = express.Router();
+import { login, getShowList, addShow, removeShow, markEpisodeAsWatched, createUser } from '../controller/showController';
 
-router.get("/", async (_, res) => {
-  const ENV = process.env.NODE_ENV!;
-  const ORIGIN = process.env.ALLOW_ORIGIN!;
-  const BASE = process.env.BASE_URL!;
+const router = Router();
 
-  return res.status(200).json({
-    env: ENV,
-    origin: ORIGIN,
-    base: BASE,
-    callback: BASE + process.env.OAUTH_REDIRECT_URI,
-    redirect: `${ORIGIN}merge/:platformID`,
-  });
-});
+router.post('/login', login);
+router.post('/createuser', createUser);
+router.get('/showlist', getShowList);
+router.post('/addshow', addShow);
+router.delete('/removeshow/:id', removeShow);
+router.put('/markwatched/:id', markEpisodeAsWatched);
 
 export default router;
