@@ -109,8 +109,5 @@ dist
 # VS Code
 .vscode
 
-# Package Lock
-package-lock.json
-
 # Snyk Cache
 .dccache
