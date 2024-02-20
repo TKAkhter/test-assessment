@@ -9,7 +9,6 @@
     "postinstall": "npm run build",
     "start": "nodemon --optimize_for_size dist/index.js",
     "dev": "nodemon -exec --config src/config/nodemon.json 'ts-node' src/index.ts",
-    "prepare": "husky",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "prettier": "prettier --write src/**",
@@ -22,10 +21,6 @@
   "engines": {
     "node": "20.x"
   },
-  "keywords": [
-    "test-assessment",
-    "heroku"
-  ],
   "author": "Talha Akhter",
   "license": "ISC",
   "bugs": {
