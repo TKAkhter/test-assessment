@@ -5,8 +5,8 @@ import {
   createUser,
   getShowList,
   login,
-  markEpisodeAsWatched,
   removeShow,
+  toogleMarkEpisodeAsWatched,
 } from "../controller/shows.controller";
 
 const router = Router();
@@ -16,6 +16,6 @@ router.post("/createuser", createUser);
 router.get("/showlist", getShowList);
 router.post("/addshow", addShow);
 router.delete("/removeshow/:id", removeShow);
-router.put("/markwatched/:id", markEpisodeAsWatched);
+router.put("/tooglemarkwatched/:id", toogleMarkEpisodeAsWatched);
 
 export default router;

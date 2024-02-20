@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Schema, Types } from "mongoose";
 
 export interface IEpisode {
   title: string;
@@ -8,6 +8,7 @@ export interface IEpisode {
 export interface IShow extends Document {
   title: string;
   episodes: IEpisode[];
+  userId: Types.ObjectId;
 }
 
 const ShowSchema: Schema = new Schema({
@@ -18,6 +19,7 @@ const ShowSchema: Schema = new Schema({
       watched: { type: Boolean, default: false },
     },
   ],
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 export default mongoose.model<IShow>("Show", ShowSchema);
