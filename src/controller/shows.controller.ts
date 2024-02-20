@@ -49,6 +49,7 @@ export const login = async (req: Request, res: Response): Promise<Response | voi
 
 export const getShowList = async (req: Request, res: Response): Promise<Response | void> => {
   const { userId } = req.query;
+  console.log("🚀 ~ getShowList ~ userId:", userId);
   try {
     const shows = await Show.find({ userId });
     return res.json({ success: true, shows });
@@ -67,7 +68,7 @@ export const addShow = async (req: Request, res: Response): Promise<Response | v
       return res.status(404).json({ success: false, message: "User not found" });
     }
 
-    const isShowAlreadyExist = await Show.findOne({ title });
+    const isShowAlreadyExist = await Show.findOne({ title, userId });
 
     if (isShowAlreadyExist) {
       return res.status(403).json({ success: false, message: "Show Already Added in list" });
