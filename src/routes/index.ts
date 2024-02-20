@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { login, getShowList, addShow, removeShow, markEpisodeAsWatched, createUser } from '../controller/showController';
+import { login, getShowList, addShow, removeShow, markEpisodeAsWatched, createUser } from '../controller/shows.controller';
 
 const router = Router();
 
