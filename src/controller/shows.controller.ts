@@ -83,7 +83,11 @@ export const addShow = async (req: Request, res: Response): Promise<Response | v
     const tvShow = new TVShow(imdbTvShowDataMapper(imdbData), { apiKey: process.env.OMDB_API_KEY });
     const episodes = await tvShow.episodes();
 
-    const newShow = new Show({ ...imdbTvShowKeyFormatter(imdbTvShowDataMapper(imdbData)), episodes, userId });
+    const newShow = new Show({
+      ...imdbTvShowKeyFormatter(imdbTvShowDataMapper(imdbData)),
+      episodes,
+      userId,
+    });
     await newShow.save();
     return res.json({ success: true, message: "Show added successfully", show: newShow });
   } catch (error_) {
