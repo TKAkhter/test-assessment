@@ -6,28 +6,28 @@ export interface IEpisode {
   season?: number;
   episode?: number;
   imdburl?: string;
-  Plot?: string;
-  Poster?: string;
+  plot?: string;
+  poster?: string;
 }
 
 export interface IShow extends Document {
   title: string;
   episodes: IEpisode[];
   userId: Types.ObjectId;
-  Year?: string;
-  Genre?: string;
-  Plot?: string;
-  Poster?: string;
+  year?: string;
+  genre?: string;
+  plot?: string;
+  poster?: string;
   imdburl?: string;
   totalSeasons?: number;
 }
 
 const ShowSchema: Schema = new Schema({
   title: String,
-  Year: String,
-  Genre: String,
-  Plot: String,
-  Poster: String,
+  year: String,
+  genre: String,
+  plot: String,
+  poster: String,
   imdburl: String,
   totalSeasons: Number,
   episodes: [
@@ -37,8 +37,8 @@ const ShowSchema: Schema = new Schema({
       season: Number,
       episode: Number,
       imdburl: String,
-      Plot: String,
-      Poster: String,
+      plot: String,
+      poster: String,
     },
   ],
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },

@@ -25,7 +25,7 @@ export const imdbTvShowDataMapper = (object: any) => {
     end_year: object.end_year,
     totalSeasons: object.totalseasons,
     Response: "True",
-  }
+  };
 
   for (let key in mappedObject) {
     if (mappedObject[key] === undefined) {
