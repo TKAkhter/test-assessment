@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-import User from "../models/user.model";
+import User from "../models/users.model";
 
 export const login = async (req: Request, res: Response): Promise<Response | void> => {
   const { username, password } = req.body;
