@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { Request, Response } from "express";
 import { hash } from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
+
 import User from "../models/users.model";
 
 export const getAllUsers = async (req: Request, res: Response): Promise<Response | void> => {

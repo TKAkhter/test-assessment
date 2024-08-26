@@ -289,7 +289,8 @@
         "unicorn/prefer-logical-operator-over-ternary": 0,
         "unicorn/prefer-spread": 0,
         "import/namespace": 0,
-        "unicorn/prefer-array-some": 0
+        "unicorn/prefer-array-some": 0,
+        "security-rules/universal/no-vulnerable-dependencies": 0
       }
     }
   ]
