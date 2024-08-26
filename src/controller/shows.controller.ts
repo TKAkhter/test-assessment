@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { compare, hash } from "bcryptjs";
 import { Client, TVShow } from "imdb-api";
 import { sign } from "jsonwebtoken";
+
 import { imdbTvShowDataMapper, imdbTvShowKeyFormatter } from "../utils/helper";
 import User from "../models/users.model";
 import Show from "../models/shows.model";

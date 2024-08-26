@@ -2,11 +2,11 @@ import { Router } from "express";
 
 import { validateToken } from "../middlewares/validate-token";
 import {
-  getShow,
   addShow,
-  toggleMarkEpisodeAsWatched,
-  removeShow,
   getAllShows,
+  getShow,
+  removeShow,
+  toggleMarkEpisodeAsWatched,
 } from "../controller/shows.controller";
 
 const showsRouter = Router();
