@@ -74,7 +74,7 @@ export const toggleMarkEpisodeAsWatched = async (
   res: Response,
 ): Promise<Response | void> => {
   const { userId, id } = req.params;
-  const { watched, episodeIndex } = req.body;
+  const { watched, episode } = req.body;
 
   try {
     const user = await User.findById(userId);
@@ -91,7 +91,7 @@ export const toggleMarkEpisodeAsWatched = async (
       return res.status(403).json({ success: false, message: "Unauthorized to update this show" });
     }
 
-    show.episodes[episodeIndex].watched = watched;
+    show.episodes[episode - 1].watched = watched;
     await show.save();
     const UpdatedShows = await Show.find({ userId });
     return res.json({
