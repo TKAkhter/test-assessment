@@ -59,7 +59,7 @@ export const updateTask = async (req: Request, res: Response): Promise<Response 
     if (!existingTask) {
       return res.status(400).json({ success: false, message: "Task can not be updated" });
     }
-    return res.json({ success: true, message: "User created successfully", task: existingTask });
+    return res.json({ success: true, message: "User created successfully" });
   } catch (error_) {
     const error = error_ as AxiosError;
     return res.status(500).json({ success: false, message: error.message });
@@ -73,7 +73,7 @@ export const deleteTask = async (req: Request, res: Response): Promise<Response 
     if (!existingTask) {
       return res.status(400).json({ success: false, message: "Task can not be updated" });
     }
-    return res.json({ success: true, message: "Task deleted successfully", Task: existingTask });
+    return res.json({ success: true, message: "Task deleted successfully" });
   } catch (error_) {
     const error = error_ as AxiosError;
     return res.status(500).json({ success: false, message: error.message });

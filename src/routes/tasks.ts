@@ -6,14 +6,15 @@ import {
   updateTask,
   deleteTask,
 } from "../controller/tasks.controller";
+import { validateToken } from "../middlewares/validate-token";
 
-const router = Router();
+const taskRouter = Router();
 
-router.get("/", getAllTasks);
-router.get("/:id", getTask);
+taskRouter.get("/", validateToken, getAllTasks);
+taskRouter.get("/:id", validateToken, getTask);
 
-router.post("/", createTask);
-router.put("/:id", updateTask);
-router.delete("/:id", deleteTask);
+taskRouter.post("/", validateToken, createTask);
+taskRouter.put("/:id", validateToken, updateTask);
+taskRouter.delete("/:id", validateToken, deleteTask);
 
-export default router;
+export default taskRouter;

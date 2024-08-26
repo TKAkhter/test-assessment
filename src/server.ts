@@ -16,7 +16,6 @@ import mongoose from "mongoose";
 import { cors } from "./middlewares/cors";
 // Routing
 import indexRouter from "./routes/index";
-import taskRouter from "./routes/tasks";
 
 const app = express();
 
@@ -111,7 +110,6 @@ app.use((_, res, next) => {
 
 // Routes
 app.use("/api", indexRouter);
-app.use("/tasks", taskRouter);
 
 // Sentry Debug Route
 app.get("/debug-sentry", () => {

@@ -1,26 +1,9 @@
 import { AxiosError } from "axios";
 import { Request, Response } from "express";
-import { compare, hash } from "bcryptjs";
+import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-import User from "../models/user";
-
-export const createUser = async (req: Request, res: Response): Promise<Response | void> => {
-  const { username, password } = req.body;
-  try {
-    const existingUser = await User.findOne({ username });
-    if (existingUser) {
-      return res.status(400).json({ success: false, message: "User already exists" });
-    }
-    const salt = Number.parseInt(process.env.HASH!);
-    const newUser = new User({ username, password: await hash(password, salt) });
-    await newUser.save();
-    return res.json({ success: true, message: "User created successfully", user: newUser });
-  } catch (error_) {
-    const error = error_ as AxiosError;
-    return res.status(500).json({ success: false, message: error.message });
-  }
-};
+import User from "../models/user.model";
 
 export const login = async (req: Request, res: Response): Promise<Response | void> => {
   const { username, password } = req.body;
