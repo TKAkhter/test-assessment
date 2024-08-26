@@ -1,21 +1,18 @@
 import { Router } from "express";
 
-import {
-  addShow,
-  createUser,
-  getShowList,
-  login,
-  removeShow,
-  toogleMarkEpisodeAsWatched,
-} from "../controller/shows.controller";
+import userRouter from "./users";
+import authRouter from "./auth";
+import taskRouter from "./tasks";
+import { healthCheckRouter } from "../controller/index.controller";
+import showsRouter from "./shows";
 
 const router = Router();
 
-router.post("/login", login);
-router.post("/createuser", createUser);
-router.get("/showlist", getShowList);
-router.post("/addshow", addShow);
-router.delete("/removeshow/:userId/:id", removeShow);
-router.put("/tooglemarkwatched/:userId/:id", toogleMarkEpisodeAsWatched);
+router.use("/v1/healthcheck", healthCheckRouter);
+
+router.use("/v1/users", userRouter);
+router.use("/v1/auth", authRouter);
+router.use("/v1/tasks", taskRouter);
+router.use("/v1/shows", showsRouter);
 
 export default router;
